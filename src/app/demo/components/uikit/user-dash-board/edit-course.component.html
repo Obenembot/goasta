@@ -1,0 +1,38 @@
+<div class="grid">
+    <div class="col-12 md:col-6">
+        <form (ngSubmit)="checkForm(form)" [formGroup]="form">
+            <div class="card p-fluid">
+                <h5>Add/Edit Course</h5>
+                <div class="field">
+                    <label htmlFor="courseName">Name</label>
+                    <input pInputText id="courseName" type="text" formControlName="courseName"
+                           [class]="(form.get('courseName').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="name">Duration</label>
+                    <input pInputText id="duration" type="text" formControlName="duration"
+                           [class]="(form.get('duration').errors)? 'ng-invalid ng-dirty': ''" />
+                </div>
+                <div class="field mb-3">
+                    <label htmlFor="description">Description</label>
+                    <textarea
+                        rows="5"
+                        cols="30"
+                        pInputTextarea
+                        formControlName="description"  [class]="(form.get('description').errors)? 'ng-invalid ng-dirty': ''">
+                    </textarea>
+                </div>
+                <div class="form-actions p-fluid">
+                    <p-button type="submit" styleClass="p-button-success p-button-raised" class="float-end"
+                              [loading]="isLoading" label="Submit" icon="pi pi-check" iconPos="right">
+                    </p-button>
+                    <button type="button" pButton class="p-button-raised p-button-secondary mt-3" (click)="routeToList()"
+                            icon="pi pi-times" label="Cancel">
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+

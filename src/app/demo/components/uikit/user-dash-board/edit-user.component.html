@@ -1,0 +1,64 @@
+<div class="grid">
+    <div class="col-12 md:col-6">
+        <form (ngSubmit)="checkForm(form)" [formGroup]="form">
+            <div class="card p-fluid">
+                <h5>Add/Edit Admin</h5>
+                <div class="field">
+                    <label htmlFor="name1">ID No./Passport</label>
+                    <input pInputText id="idNumber" type="text" formControlName="idNumber"
+                           [class]="(form.get('idNumber').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="name">First Name</label>
+                    <input pInputText id="firstName" type="text" formControlName="firstName"
+                           [class]="(form.get('firstName').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="name">Last Name</label>
+                    <input pInputText id="lastName" type="text" formControlName="lastName"
+                           [class]="(form.get('lastName').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <p-inputMask
+                        formControlName="phoneNumber" mask="+237999999999"
+                        [class]="(formIsInvalid && form.controls['phoneNumber'].errors)? 'ng-invalid ng-dirty': ''"></p-inputMask>
+
+                </div>
+                <div class="field">
+                    <label htmlFor="email1">Email</label>
+                    <input pInputText id="email1" type="text" formControlName="email"
+                           [class]="(form.get('email').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+
+                <div class="field">
+                    <label htmlFor="age1">Date Of Birth</label>
+                    <p-inputMask mask="99/99/9999" placeholder="02/27/2021" slotChar="mm-dd-yyyy"
+                                 class="fullInput" formControlName="dateOfBirth" id="dateOfBirth"
+                    ></p-inputMask>
+                </div>
+                <div class="field">
+                    <label htmlFor="username">Username</label>
+                    <input  formControlName="username" id="username" pInputText type="text">
+                </div>
+                <div class="field">
+                    <label htmlFor="password">Password</label>
+                    <p-password formControlName="password" [toggleMask]="true"
+                                [class]="formIsInvalid && form.controls['password'].errors? 'ng-invalid ng-dirty': ''"
+                    ></p-password>
+                </div>
+                <div class="form-actions p-fluid">
+                    <p-button type="submit" styleClass="p-button-success p-button-raised" class="float-end"
+                              [loading]="isLoading" label="Submit" icon="pi pi-check" iconPos="right">
+                    </p-button>
+                    <button type="button" pButton class="p-button-raised p-button-secondary mt-3"
+                            (click)="routeToList()"
+                            icon="pi pi-times" label="Cancel">
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+

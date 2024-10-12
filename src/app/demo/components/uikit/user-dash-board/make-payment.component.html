@@ -1,0 +1,53 @@
+<div class="grid">
+    <div class="col-12 md:col-6">
+        <form (ngSubmit)="checkForm(form)" [formGroup]="form">
+            <div class="card p-fluid">
+                <h5>Capture Payment</h5>
+                <div class="field">
+                    <button pButton label="Check Payments" type="button" class="p-button-raised p-button-success float-end mb-3"
+                            (click)="routeToList()" icon="pi pi-money-bill" iconPos="left"></button>
+                    <label htmlFor="studentId">Student Id</label>
+                    <input pInputText id="studentId" type="text" formControlName="studentId"
+                           [class]="(form.get('studentId').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="depositAmount">Deposit Amount</label>
+                    <p-inputNumber formControlName="depositAmount"
+                                   [class]="formIsInvalid && form.controls['depositAmount'].errors? 'ng-invalid ng-dirty': ''">
+                    </p-inputNumber>
+                </div>
+                <div class="field">
+                    <label htmlFor="outstandingAmount">Outstanding Amount</label>
+                    <p-inputNumber formControlName="outstandingAmount"
+                                   [class]="formIsInvalid && form.controls['outstandingAmount'].errors? 'ng-invalid ng-dirty': ''">
+                    </p-inputNumber>
+                </div>      <div class="field">
+                    <label htmlFor="depositAmount">Payment Date</label>
+                <p-calendar formControlName="paymentDate"
+                            [class]="formIsInvalid && form.controls['paymentDate'].errors? 'ng-invalid ng-dirty': ''"></p-calendar>
+                </div>
+
+
+                <div class="form-actions p-fluid">
+                    <p-button type="submit" styleClass="p-button-success p-button-raised" class="float-end"
+                              [loading]="isLoading" label="Submit" icon="pi pi-check" iconPos="right">
+                    </p-button>
+                    <button type="button" pButton class="p-button-raised p-button-secondary mt-3"
+                            (click)="routeToList()"
+                            icon="pi pi-times" label="Cancel">
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="width40Percent" *ngIf="isLoading">
+    <p-panel header="Saving Payment">
+        Sending...
+        <p-progressSpinner>
+
+        </p-progressSpinner>
+    </p-panel>
+</div>

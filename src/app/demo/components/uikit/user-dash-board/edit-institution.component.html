@@ -1,0 +1,50 @@
+<div class="grid">
+    <div class="col-12 md:col-6">
+        <form (ngSubmit)="checkForm(form)" [formGroup]="form">
+            <div class="card p-fluid">
+                <h5>Add/Edit Institution</h5>
+                <div class="field">
+                    <label htmlFor="name1">Registration No.</label>
+                    <input pInputText id="name1" type="text" formControlName="registrationNumber"
+                           [class]="(form.get('registrationNumber').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="name">Name</label>
+                    <input pInputText id="name" type="text" formControlName="name"
+                           [class]="(form.get('name').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <p-inputMask
+                        formControlName="phoneNumber" mask="+237999999999"
+                        [class]="(formIsInvalid && form.controls['phoneNumber'].errors)? 'ng-invalid ng-dirty': ''"></p-inputMask>
+                </div>
+                <div class="field">
+                    <label htmlFor="email1">Email</label>
+                    <input pInputText id="email1" type="text" formControlName="email"
+                           [class]="(form.get('email').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="email1">URL Website</label>
+                    <input pInputText id="url" type="text" formControlName="url"
+                           [class]="(form.get('url').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="age1">Address</label>
+                    <input pInputText id="address" type="text" formControlName="address"
+                           [class]="(form.get('address').errors)? 'ng-invalid ng-dirty': ''"/>
+                </div>
+            </div>
+            <div class="form-actions p-fluid">
+                <p-button type="submit" styleClass="p-button-success p-button-raised" class="float-end"
+                          [loading]="isLoading" label="Submit" icon="pi pi-check" iconPos="right">
+                </p-button>
+                <button type="button" pButton class="p-button-raised p-button-secondary mt-3"
+                        (click)="routeToList()"
+                        icon="pi pi-times" label="Cancel">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
